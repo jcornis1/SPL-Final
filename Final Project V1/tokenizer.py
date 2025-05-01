@@ -1,3 +1,6 @@
+#!------ New feature implemented: API Key + Mode Support ------!
+# Added tokenizer rules for `apikey`, `mode`, and `callMode` keywords
+
 import re
 
 patterns = [
@@ -17,7 +20,10 @@ patterns = [
     [r"continue", "continue"],  # for keyword
     [r"print", "print"],  # print keyword
     [r"import", "import"],  # import keyword
-    [r"external", "external"],  # external keyword
+    [r"apikey", "apikey"],  # new keyword for API key declarations
+[r"mode", "mode"],      # new keyword for mode declarations
+[r"callMode", "callMode"],  # callMode built-in function
+[r"external", "external"],  # external keyword
     [r"input", "input"],  # function keyword
     [r"exit", "exit"],  # exit keyword
     [r"and", "&&"],  # alternate for &&

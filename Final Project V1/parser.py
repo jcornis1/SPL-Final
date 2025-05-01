@@ -1,6 +1,33 @@
 from tokenizer import tokenize
 from pprint import pprint
 
+
+#!------ New feature implemented: API Key + Mode Support ------!
+# Special case parsing for `apikey <name> = "<key>"`, `mode <name> = "<key>"`, and callMode("...")
+
+def parse_special_keywords(tokens):
+    if tokens[0]["tag"] == "apikey":
+        assert tokens[1]["tag"] == "identifier", "Expected identifier after 'apikey'"
+        assert tokens[2]["tag"] == "=", "Expected '=' after apikey name"
+        target = {"tag": "identifier", "value": "apikey " + tokens[1]["value"]}
+        value, remaining = parse_expression(tokens[3:])
+        return {"tag": "assign", "target": target, "value": value}, remaining
+
+    if tokens[0]["tag"] == "mode":
+        assert tokens[1]["tag"] == "identifier", "Expected identifier after 'mode'"
+        assert tokens[2]["tag"] == "=", "Expected '=' after mode name"
+        target = {"tag": "identifier", "value": "mode " + tokens[1]["value"]}
+        value, remaining = parse_expression(tokens[3:])
+        return {"tag": "assign", "target": target, "value": value}, remaining
+
+    if tokens[0]["tag"] == "callMode":
+        assert tokens[1]["tag"] == "(", "Expected '(' after callMode"
+        arg, tokens = parse_expression(tokens[2:])
+        assert tokens[0]["tag"] == ")", "Expected ')' after callMode argument"
+        return {"tag": "call", "function": {"tag": "identifier", "value": "callMode"}, "arguments": [arg]}, tokens[1:]
+    return None, tokens
+
+
 # *(&(*& NOTES))
 
 # can't have a function literal take part in an assignment if there are other operators.

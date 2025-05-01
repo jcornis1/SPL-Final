@@ -1,0 +1,94 @@
+# How to Use Our Custom Language with API Key + Mode Support
+
+This guide is written to help you understand and use the language we built for our final project. You don’t need to know everything about Python — just follow the steps!
+
+---
+
+## Files You'll Need
+
+Make sure you have these files:
+- `tokenizer_updated.py`
+- `parser_updated.py`
+- `evaluator_updated.py`
+- `runner_updated.py`
+- `test_modes.t`
+
+---
+
+## How to Run the Language
+
+Open a terminal in the folder that has these files.
+
+Then run:
+
+```bash
+python runner_updated.py test_modes.t
+```
+
+This will execute a `.t` script that uses our new features.
+
+---
+
+## What’s New in This Language?
+
+### 1. Declare API Keys
+
+```t
+apikey openai = "sk-somekey123";
+```
+
+This stores a key under the name `openai`.
+
+---
+
+### 2. Define Modes
+
+```t
+mode debug uses openai;
+```
+
+This tells the language: "when I’m in `debug` mode, use the `openai` key."
+
+---
+
+### 3. Switch Between Modes
+
+```t
+currentMode = "debug";
+```
+
+This tells the system which mode to use for the next request.
+
+---
+
+### 4. Send a Prompt to the Current Mode
+
+```t
+callMode("Generate test cases for a login feature");
+```
+
+This simulates calling an AI tool with the prompt, using whatever API key is tied to the active mode.
+
+---
+
+## Quick Example
+
+Here’s a full sample:
+
+```t
+apikey openai = "sk-123";
+mode dev uses openai;
+
+currentMode = "dev";
+callMode("Make a hello world function");
+```
+
+---
+
+## Want to Explore More?
+
+Feel free to edit `test_modes.t` or make your own `.t` files to try out the features.
+
+If anything breaks or you get confused, text Brandon.
+
+You've got this 💪

@@ -1,55 +1,48 @@
+# Custom Language Final Project — API Key + Mode Feature
 
-# QuestLang — API Mode-Enabled Programming Language
+## Feature Summary
 
-QuestLang is a custom language built for programmable assistance and dynamic mode switching via API keys.
+This language now supports programmable AI routing by embedding:
 
-## 🚀 Features
+- ✅ **API Key Declaration:** `apikey openai = "sk-abc123";`
+- ✅ **Mode Definition:** `mode debug uses openai;`
+- ✅ **Switching Modes:** `currentMode = "debug";`
+- ✅ **Dynamic Prompt Execution:** `callMode("run tests on hash function");`
 
-- 🔐 **API Key Support**: Register and use API keys for any service.
-- 🧠 **Modes**: Define modes (e.g., `debug`, `image`, `weather`) and bind them to API keys.
-- 🔄 **Dynamic Dispatch**: Switch modes during execution and route prompts accordingly.
-- 🧪 **Built-in Testing**: Supports isolated testing via `test_modes.py`.
+---
 
-## 🧬 Language Syntax
+## Project Files
 
-### API Key Declaration
-```quest
-apikey openai = "sk-abc";
-apikey weather = "wx-123";
+- `tokenizer.py`: recognizes new keywords
+- `parser.py`: parses `apikey`, `mode`, `callMode(...)` logic
+- `evaluator.py`: evaluates new features + dispatches modes
+- `runner.py`: CLI & REPL logic
+- `test_modes.t`: sample script for API mode demo
+
+---
+
+## Comment Style
+
+Every new feature block is clearly documented with:
+
+```python
+#!------ New feature implemented: API Key + Mode Support ------!
 ```
 
-### Mode Declaration
-```quest
-mode debug uses openai;
-mode forecast uses weather;
-```
+This makes it easy for classmates and professors to follow.
 
-### Mode Switching & Call
-```quest
-currentMode = "debug";
-callMode("Improve this function");
+---
 
-currentMode = "forecast";
-callMode("Give me the weather in Kent, OH");
-```
+## Run Demo
 
-## 🧪 Testing
+To test the system:
 
-Run the mode feature tests:
 ```bash
-python test_modes.py
+python runner_updated.py test_modes.t
 ```
 
-## 📁 Project Structure
+Output will simulate routed API calls using the correct mode and API key name.
 
-- `tokenizer.py` — Lexical analyzer
-- `parser.py` — Grammar & AST generation
-- `evaluator.py` — Execution engine (with error handling)
-- `runner.py` — CLI entry point
-- `test_modes.py` — Custom test cases for API/Mode features
-- `README.md` — Project documentation
+---
 
-## 💡 Credits
-
-Project idea and enhancements by Brandon Summerlin, inspired by RooCode and intelligent dev assistants like Jarvis.
-
+Built with Brandon & Jonah
