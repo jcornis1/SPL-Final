@@ -20,10 +20,12 @@ patterns = [
     [r"continue", "continue"],  # for keyword
     [r"print", "print"],  # print keyword
     [r"import", "import"],  # import keyword
-    [r"apikey", "apikey"],  # new keyword for API key declarations  # ------- New feature implemented: API Key Support -------!
-    [r"mode", "mode"],      # new keyword for mode declarations     # ------- New feature implemented: Mode Support -------!
-    [r"callMode", "callMode"],  # callMode built-in function        # ------- New feature implemented: Mode Support -------!
-    [r"external", "external"],  # external keyword
+    [r"apikey", "apikey"],  # new keyword for API key declarations
+[r"mode", "mode"],      # new keyword for mode declarations
+[r"callMode", "callMode"],  # callMode built-in function
+[r"switch", "switch"],  # switch keyword
+[r"case", "case"],  # case keyword
+[r"external", "external"],  # external keyword
     [r"input", "input"],  # function keyword
     [r"exit", "exit"],  # exit keyword
     [r"and", "&&"],  # alternate for &&

@@ -7,10 +7,10 @@ This guide is written to help you understand and use the language we built for o
 ## Files You'll Need
 
 Make sure you have these files:
-- `tokenizer.py`
-- `parser.py`
-- `evaluator.py`
-- `runner.py`
+- `tokenizer_updated.py`
+- `parser_updated.py`
+- `evaluator_updated.py`
+- `runner_updated.py`
 - `test_modes.t`
 
 ---
@@ -22,7 +22,7 @@ Open a terminal in the folder that has these files.
 Then run:
 
 ```bash
-python runner.py test_modes.t
+python runner_updated.py test_modes.t
 ```
 
 This will execute a `.t` script that uses our new features.

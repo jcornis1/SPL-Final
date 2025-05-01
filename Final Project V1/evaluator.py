@@ -100,11 +100,11 @@ def ast_to_string(ast):
         return "(" + ",".join(items) + ")"
 
     if ast["tag"] == "complex":
-        s = f"{ast_to_string(ast["base"])}[{ast_to_string(ast["index"])}]"
+        s = f"{ast_to_string(ast['base'])}[{ast_to_string(ast['index'])}]"
         return s
 
     if ast["tag"] == "assign":
-        s = f"{ast_to_string(ast["target"])} = {ast_to_string(ast["value"])}]"
+        s = f"{ast_to_string(ast['target'])} = {ast_to_string(ast['value'])}]"
         return s
 
     if ast["tag"] == "return":
@@ -143,16 +143,16 @@ def evaluate(ast, environment):
         assert type(ast["value"]) in [
             float,
             int,
-        ], f"unexpected type {type(ast["value"])}"
+        ], f"unexpected type {type(ast['value'])}"
         return ast["value"], None
     if ast["tag"] == "boolean":
         assert ast["value"] in [
             True,
             False,
-        ], f"unexpected type {type(ast["value"])}"
+        ], f"unexpected type {type(ast['value'])}"
         return ast["value"], None
     if ast["tag"] == "string":
-        assert type(ast["value"]) == str, f"unexpected type {type(ast["value"])}"
+        assert type(ast["value"]) == str, f"unexpected type {type(ast['value'])}"
         return ast["value"], None
     if ast["tag"] == "null":
         return None, None
@@ -199,7 +199,7 @@ def evaluate(ast, environment):
         types = type_of(left_value, right_value)
         if types == "number-number":
             return left_value - right_value, None
-        raise Exception(f"Illegal types for {ast["tag"]}:{types}")
+        raise Exception(f"Illegal types for {ast['tag']}:{types}")
 
     if ast["tag"] == "*":
         left_value, _ = evaluate(ast["left"], environment)
