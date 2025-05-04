@@ -1,0 +1,1 @@
+This is a collaboration made between me and Brandon Summerlin (SummerlinCodes) for the Spring 2025 Structure of Programming Languages Final Project. I added the switch functionality while he added the API/AI features.
